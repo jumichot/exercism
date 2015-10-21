@@ -54,17 +54,14 @@ defmodule TeenagerTest do
     assert Teenager.hey("  ") == "Fine. Be that way!"
   end
 
-  @tag :pending
   test "only numbers" do
     assert Teenager.hey("1, 2, 3") == "Whatever."
   end
 
-  @tag :pending
   test "question with numbers" do
     assert Teenager.hey("4?") == "Sure."
   end
 
-  @tag :pending
   test "shouting in Russian" do
     # Hopefully this is Russian for "get out"
     assert Teenager.hey("УХОДИТЬ") == "Whoa, chill out!"

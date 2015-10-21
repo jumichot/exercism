@@ -1,7 +1,6 @@
 defmodule Teenager do
   def hey(input) do
-    clean_input = input
-    |> String.strip
+    clean_input = input |> String.strip
 
     cond do
       silent?(clean_input) ->
@@ -16,18 +15,25 @@ defmodule Teenager do
   end
 
   defp silent?(input) do
-    String.length(input) == 0
+    MyString.empty?(input)
   end
 
   defp shooting?(input) do
-    all_caps?(input)
+    MyString.all_word_character_caps?(input)
   end
 
   defp question?(input) do
     String.ends_with?(input, "?")
   end
+end
 
-  defp all_caps?(input) do
-    input === String.upcase(input)
+defmodule MyString do
+  def empty?(input) do
+    input == ""
+  end
+
+  def all_word_character_caps?(input) do
+    clean_input = String.replace(input, ~r{\W|\d}, "")
+    clean_input === String.upcase(clean_input) && !empty?(clean_input)
   end
 end
