@@ -18,7 +18,6 @@ defmodule TeenagerTest do
     assert Teenager.hey("WATCH OUT!") == "Whoa, chill out!"
   end
 
-  @tag :pending
   test "asking a question" do
     assert Teenager.hey("Does this cryogenic chamber make me look fat?") == "Sure."
   end
