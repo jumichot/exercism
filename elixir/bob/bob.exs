@@ -1,16 +1,26 @@
 defmodule Teenager do
   def hey(input) do
     clean_input = input
-    # |> String.strip
+    |> String.strip
 
     cond do
-      all_caps?(clean_input) ->
+      silent?(clean_input) ->
+        "Fine. Be that way!"
+      shooting?(clean_input) ->
         "Whoa, chill out!"
       question?(clean_input) ->
         "Sure."
       true ->
         "Whatever."
     end
+  end
+
+  defp silent?(input) do
+    String.length(input) == 0
+  end
+
+  defp shooting?(input) do
+    all_caps?(input)
   end
 
   defp question?(input) do
