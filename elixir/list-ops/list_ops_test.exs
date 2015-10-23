@@ -21,38 +21,46 @@ defmodule ListOpsTest do
     assert L.count([1,3,5,7]) == 4
   end
 
-  # test "count of huge list" do
-  #   assert L.count(Enum.to_list(1..1_000_000)) == 1_000_000
-  # end
+  test "count of huge list" do
+    assert L.count(Enum.to_list(1..1_000_000)) == 1_000_000
+  end
 
-  # test "reverse of empty list" do
-  #   assert L.reverse([]) == []
-  # end
+  test "reverse of empty list" do
+    assert L.reverse([]) == []
+  end
 
-  # test "reverse of normal list" do
-  #   assert L.reverse([1,3,5,7]) == [7,5,3,1]
-  # end
+  test "reverse of 1 elem" do
+    assert L.reverse([1]) == [1]
+  end
 
-  # test "reverse of huge list" do
-  #   assert L.reverse(Enum.to_list(1..1_000_000)) == Enum.to_list(1_000_000..1)
-  # end
+  test "reverse of 2 elem" do
+    assert L.reverse([1,2]) == [2,1]
+  end
 
-  # test "map of empty list" do
-  #   assert L.map([], &(&1+1)) == []
-  # end
+  test "reverse of normal list" do
+    assert L.reverse([1,3,5,7]) == [7,5,3,1]
+  end
 
-  # test "map of normal list" do
-  #   assert L.map([1,3,5,7], &(&1+1)) == [2,4,6,8]
-  # end
+  test "reverse of huge list" do
+    assert L.reverse(Enum.to_list(1..1_000_000)) == Enum.to_list(1_000_000..1)
+  end
 
-  # test "map of huge list" do
-  #   assert L.map(Enum.to_list(1..1_000_000), &(&1+1)) ==
-  #     Enum.to_list(2..1_000_001)
-  # end
+  test "map of empty list" do
+    assert L.map([], &(&1+1)) == []
+  end
 
-  # test "filter of empty list" do
-  #   assert L.filter([], &odd?/1) == []
-  # end
+  test "map of normal list" do
+    assert L.map([1,3,5,7], &(&1+1)) == [2,4,6,8]
+  end
+
+  test "map of huge list" do
+    assert L.map(Enum.to_list(1..1_000_000), &(&1+1)) ==
+      Enum.to_list(2..1_000_001)
+  end
+
+  test "filter of empty list" do
+    assert L.filter([], &odd?/1) == []
+  end
 
   # test "filter of normal list" do
   #   assert L.filter([1,2,3,4], &odd?/1) == [1,3]
