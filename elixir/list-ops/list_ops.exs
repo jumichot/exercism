@@ -13,10 +13,10 @@ defmodule ListOps do
     _reduce(l,0, fn(_,acc) -> 1 + acc  end)
   end
 
-  defp _length([]), do: 0
-  defp _length([_|tail]) do
-    1 + _length(tail)
-  end
+  # defp _length([],count), do: count
+  # defp _length([_|tail]) do
+  #   1 + _length(tail)
+  # end
 
   @spec reverse(list) :: list
   def reverse(l) do
@@ -77,32 +77,29 @@ defmodule ListOps do
   end
 
   @spec append(list, list) :: list
-  def append(a, b) do
-    _append(a,b)
-  end
+  def append([], []), do: []
+  def append([], l), do: l
+  def append([head | tail], l), do: [head | append(tail, l)]
 
-
-  defp _append([],[]), do: []
-  defp _append([], b), do: b
-  defp _append(a, []), do: a
-  defp _append(a,b) do
-  end
-
-
-
-  # @spec concat([[any]]) :: [any]
-  # def concat(ll) do
-
+  @spec concat([[any]]) :: [any]
+  def concat([]), do: []
+  def concat([head_list | tail]), do: append(head_list, concat(tail))
+  # @spec append(list, list) :: list
+  # def append(a, b) do
+  #   _append(a,b)
   # end
+
+#   defp _append([],[]), do: []
+#   defp _append([], b), do: b
+#   defp _append(a, []), do: a
+#   defp _append(list1, list2) do
+#     list1
+#     |> reverse
+#     |> _reduce(list2, &([&1|&2]))
+#   end
+
+#   @spec concat([[any]]) :: [any]
+#   def concat(ll) do
+#     _reduce(ll, [], &append(&2, &1))
+#   end
 end
-  # def flatten([]), do: []
-  # def flatten([head | tail]) do
-  #   [flatten(head) ++ flatten(tail)]
-  # end
-  # def flatten(head), do: [head]
-
-  # def flatten([]), do: []
-  # def flatten([head]) when not is_list(head), do: [head]
-  # def flatten([head|tail]) do
-  #   flatten(head) ++ flatten(tail)
-  # end
